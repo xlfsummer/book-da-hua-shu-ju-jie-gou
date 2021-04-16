@@ -29,8 +29,10 @@ function infix2postfix(expression) {
             }
 
             let prev = operatorStack[operatorStack.length - 1];
-            if(getPriority(prev) && getPriority(opertaor)
-            && getPriority(prev) >= getPriority(opertaor)){
+            // undefined >= undefined // false
+            // 1 >= undefined // false
+            // undefained >= 1 // false
+            if(getPriority(prev) >= getPriority(opertaor)){
                 outputArray.push(operatorStack.pop());
                 operatorStack.push(opertaor);
                 continue;
